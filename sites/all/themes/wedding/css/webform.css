@@ -1,0 +1,102 @@
+/**
+ * @file
+ * Front-end styling for the display of webforms.
+ */
+input.webform-calendar {
+  display: none;
+  padding: 3px;
+  vertical-align: top;
+}
+html.js input.webform-calendar {
+  display: inline;
+}
+.webform-container-inline label {
+  display: inline;
+  margin-right: 1em;
+}
+.webform-container-inline div,
+.webform-container-inline div.form-item {
+  display: inline;
+}
+.webform-container-inline div.description {
+  display: block;
+}
+.webform-container-inline div.messages {
+  display: block;
+  float: left;
+}
+.webform-container-inline div.ajax-progress-bar div {
+  display: inherit;
+}
+
+#contact_side {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  float: right;
+  width: 300px;
+  border: 1px solid #ccc;
+  margin: -3.11em 10px 0px;
+  padding: 10px;
+  background: rgba(255,255,255,0.4);
+}
+
+#contact_side h3 {
+  margin-top: 0px;
+  font-size: 12pt;
+}
+
+h1.contact-title {
+  color: #000;
+  font-size: 14pt;
+}
+
+.webform-component .form-text {
+  width: 300px;
+}
+
+.webform-component label {
+  font-size: 10pt;
+  font-weight: normal;
+  vertical-align: bottom;
+}
+
+.webform-component input {
+  vertical-align: top;
+}
+
+label[for=edit-submitted-question-type] {
+  margin-bottom: 10px;
+}
+
+.webform-component-textfield label,
+.webform-component-email label {
+  float: left;
+  width: 250px; 
+  display: block;
+}
+
+.webform-component-textarea textarea {
+  width: auto;
+}
+
+.webform-component-textarea label {
+  display: inline;
+}
+
+.grippie {
+  width: 685px;
+}
+
+.node-webform label {
+  color: #000;
+}
+
+.node-webform label.option {
+  color: #666;
+}
+
+#edit-field-category-und .form-type-checkbox {
+  width: 33.3333%;
+  float: left;
+}

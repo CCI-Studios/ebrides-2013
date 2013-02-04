@@ -1,0 +1,12 @@
+.region-highlighted {
+	position: relative;
+}
+
+.region-highlighted h1 {
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+	color: #f477aa;
+	width: 240px;
+	font-weight: 200;
+	line-height: 1.2;
+	margin-left: 15px;
+}

@@ -1,0 +1,258 @@
+/**
+ * @file
+ * Positioning for responsive layout .
+ *
+ * Define CSS classes to create a table-free, 3-column, 2-column, or single
+ * column layout depending on whether blocks are enabled in the left or right
+ * columns.
+ *
+ * This layout uses the Zen Grids plugin for Compass: http://zengrids.com
+ */
+
+/*
+ * Center the page.
+ */
+
+#page {
+  /* For screen sizes larger than 960px, prevent excessively long lines of text
+     by setting a max-width. */
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0px 10px;
+  max-width: 960px;
+  min-height: 780px;
+}
+
+#content {
+  display: table-footer-group;
+}
+
+.region-bottom {
+  margin-left: auto;
+  margin-right: auto;
+  background: #0f0f0f url(../../images/footer_bg.jpg) repeat-x top center;
+  background-clip: content-box;
+  height: 168px;
+  text-align: center;
+  padding-top: 5px;
+  margin-bottom: 0px;
+  margin-top: 30px;
+  font-size: 8pt;
+  color: #fff;
+  border-top: 1px dashed #999;
+
+}
+
+.region-bottom a {
+  color: #fff;
+  text-decoration: none;
+}
+
+/*
+ * Apply the shared properties of grid items in a single, efficient ruleset.
+ */
+
+#header,
+#content,
+#navigation,
+.region-highlighted,
+.region-sidebar-first,
+.region-sidebar-second,
+#footer {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  word-wrap: break-word;
+  _display: inline;
+  _overflow: hidden;
+  _overflow-y: visible;
+}
+
+/*
+ * Containers for grid items and flow items.
+ */
+
+#header,
+#main,
+#footer {
+  position: relative;
+  zoom: 1;
+}
+#header:before, #header:after,
+#main:before, #main:after,
+#footer:before, #footer:after {
+  content: "";
+  display: table;
+}
+#header:after,
+#main:after,
+#footer:after {
+  clear: both;
+}
+
+.region-sidebar-first,
+.region-sidebar-second,
+.region-highlighted {
+  width: 100%;
+}
+
+.region-sidebar-second {
+  margin-top: 20px;
+  text-align: left;
+  display: table-header-group;
+}
+
+#block-views-frontpage-ads-block,
+.view-frontpage-ads {
+  width: 100%;
+  text-align: center;
+}
+.views-field-field-ad {
+  float: left;
+  width: 48%;
+  padding: 1%;
+}
+
+/*
+ * Responsive
+ */
+
+@media all and (max-width: 400px) {
+  
+  #main {
+    /* padding-top: 3em; Move all the children of #main down to make room. */
+    position: relative;
+  }
+
+  #navigation {
+    position: absolute;
+    top: 0; /* Move the navbar up inside #main's padding. */
+    height: 3em;
+    width: 100%;
+  }
+
+  .region-header {
+    float: left;
+  }
+
+  .region-header #block-block-3,
+  .region-header #block-block-4 {
+    position: absolute;
+  }
+  .region-header #block-block-3 {
+    top: 0px;
+    right: 0px;
+  }
+  .region-header #block-block-4 {
+    top: 0px;
+    right: 40px;
+  }
+
+  .region-header #block-search-form {
+    float: none;
+    width: 100%;
+    text-align: center;
+  }
+
+  #logo {
+    width: 50%;
+  }
+
+  #block-block-1 h1 {
+    margin: 0px;
+    font-size: 1.5em;
+  }
+
+  #block-block-1 li {
+    font-size: .8em;
+  }
+
+  .listing {
+    padding: 10px 10px 10px 23.5%; /* 200/924 */
+  }
+
+  #contact_side {
+    float: none;
+    margin: 0px;
+    max-width: 300px;
+    border: 0;
+  }
+
+  .webform-component-textfield label,
+  .webform-component-email label {
+    float: none;
+    width: 250px; 
+    display: block;
+  }
+
+  .webform-component .form-text,
+  .webform-component-textarea textarea {
+    width: 250px;
+  }
+}
+
+@media all and (min-width: 480px) {
+  
+  #main {
+    /* padding-top: 3em; Move all the children of #main down to make room. */
+    position: relative;
+  }
+
+  #navigation {
+    position: absolute;
+    top: 0; /* Move the navbar up inside #main's padding. */
+    height: 3em;
+    width: 100%;
+  }
+}
+
+/*
+ * Mobile first but anything over 960px, display the following
+ */
+
+@media all and (min-width: 960px) {
+  .region-highlighted,
+  .sidebar-second #content, 
+  .two-sidebars #content {
+    width: 66.6666%;
+    float: left;
+  }
+
+  .sidebar {
+    width: 33.3333%;
+    float: right;
+    padding-left: 20px;
+  }
+
+  .region-sidebar-first {
+    /*max-width: 320px;*/
+  }
+  .region-sidebar-second {
+    display: block;
+    margin-top: 55px;
+    text-align: center;
+  }
+
+  #content {
+    display: block;
+  }
+
+  #block-block-1 {
+    background-size: 41.40625%; /* 265/640 = 41.40625% */
+    padding-right: 41.40625%; /* 265/640 = 41.40625% */
+  }
+
+  .views-field-field-ad {
+    width: inherit;
+    padding: 0;
+  }
+  
+  .front .views-field-field-image img {
+    width: 25.9375%; /* 166/640 */
+  }
+
+  .front .listing {
+    padding-left: 31.25%; /* 200/924 */;
+  }
+}

@@ -1,0 +1,50 @@
+.listing {
+	background-color: #fff;
+	border: 1px solid #ccc;
+	padding: 10px;
+	margin-top: 20px;
+	box-shadow: 5px 5px 5px #ccc;
+	font-family: Helvetica;
+	font-size: 12pt;
+	font-weight: lighter;
+}
+
+.views-field-field-image img {
+	padding: 3px;
+	margin-right: 20px;
+	border: 2px solid #dcdcdc;
+	float: left;
+}
+
+.business_title {
+	color: #f477aa;
+	margin: 0px
+}
+
+.views-field-field-logo {
+	float: right;
+}
+
+.views-field-field-summary {
+	border-top: 2px solid #d6d6d6;
+	margin-left: 190px;
+	margin-top: 5px;
+	padding: 5px 0px 20px 0px;
+}
+
+/*.views-field-field-street-address,
+.views-field-field-city,
+.views-field-field-phone,
+.views-field-field-summary,
+.views-field-field-website {
+	margin-left: 190px;
+}*/
+
+.views-field-field-website {
+	margin-left: 190px;
+	/*float: left;*/
+}
+
+.views-field-field-email {
+	/*float: left;*/
+}

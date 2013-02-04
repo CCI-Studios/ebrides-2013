@@ -1,0 +1,66 @@
+.listing {
+	position: relative;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	padding: 10px 10px 10px 22.6450216%; /* 200/924 */
+	margin: 20px 0px;
+	box-shadow: -5px 5px 5px #ccc;
+	font-family: Helvetica;
+	font-size: 10pt;
+	line-height: 1.2;
+	font-weight: lighter;
+	color: #888;
+	overflow: auto;
+	min-height: 190px;
+}
+
+.views-field-field-image img {
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	width: 17.965368%; /* 166/924 */
+	float: left;
+	padding: 00.3246753%; /* 3px - 3/924 */;
+	border: 2px solid #dcdcdc;
+}
+
+.business_title {
+	color: #f477aa;
+	margin: 0px
+}
+
+.views-field-field-logo {
+	float: right;
+}
+
+.views-field-field-summary {
+	border-top: 2px solid #d6d6d6;
+	/*margin-left: 190px;*/
+	margin-top: 5px;
+	padding: 5px 0px 20px 0px;
+}
+
+.views-field-field-website,
+.views-field-field-email {
+	float: left;
+	clear: both;
+	line-height: 15px;
+}
+
+/*.views-field-field-website {
+	border-left: 1px solid #f477aa;
+	margin-left: 5px;
+	padding-left: 5px;
+}*/
+
+.views-field-field-website a,
+.views-field-field-email a {
+	color: #f477aa;
+	text-decoration: none;
+}
+
+.views-field-field-facebook,
+.views-field-field-twitter {
+	float: right;
+	margin-left: 5px;
+}
