@@ -194,3 +194,7 @@ td.menu-disabled {
   border-radius: 5px;
   font-size: 10pt;
 }
+
+fieldset {
+  margin: 1em 0;
+}
