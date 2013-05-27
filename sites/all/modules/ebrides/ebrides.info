@@ -1,0 +1,5 @@
+name = eBrides
+description = Misc module hooks
+core = 7.x
+
+dependencies[] = webform

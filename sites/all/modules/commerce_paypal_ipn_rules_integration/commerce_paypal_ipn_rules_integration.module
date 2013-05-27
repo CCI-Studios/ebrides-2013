@@ -73,29 +73,32 @@ function _translate_period($t3) {
  * Implements hook_commerce_paypal_ipn_process().
  */
 function commerce_paypal_ipn_rules_integration_commerce_paypal_ipn_process($order, $payment_method, $ipn) {
+watchdog("DEBUG commerce_paypal_ipn_rules_integration_commerce_paypal_ipn_process", "order=".var_export($order, true));
+watchdog("DEBUG commerce_paypal_ipn_rules_integration_commerce_paypal_ipn_process", "payment_method=".var_export($payment_method, true));
+watchdog("DEBUG commerce_paypal_ipn_rules_integration_commerce_paypal_ipn_process", "ipn=".var_export($ipn, true));
   $account = user_load($order->uid);
 
-  $payment_status = null;
+  $payment_status = "";
   if (isset($ipn['payment_status'])) {
     $payment_status = $ipn['payment_status'];
   }
-  $txn_type = null;
+  $txn_type = "";
   if (isset($ipn['txn_type'])) {
     $txn_type = $ipn['txn_type'];
   }
-  $ipn_id = null;
+  $ipn_id = "";
   if (isset($ipn['ipn_id'])) {
     $ipn_id = $ipn['ipn_id'];
   }
-  $txn_id = null;
+  $txn_id = "";
   if (isset($ipn['txn_id'])) {
     $txn_id = $ipn['txn_id'];
   }
-  $receiver_email = null;
+  $receiver_email = "";
   if (isset($ipn['receiver_email'])) {
     $receiver_email = $ipn['receiver_email'];
   }
-  $payer_email = null;
+  $payer_email = "";
   if (isset($ipn['payer_email'])) {
     $payer_email = $ipn['payer_email'];
   }

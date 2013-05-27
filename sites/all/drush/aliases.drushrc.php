@@ -6,6 +6,8 @@ $aliases['dev'] = array(
 	'remote-host'=> 'ccistaging.com',
 	'remote-user'=> 'staging',
 	'path-aliases'=> array(
-	'%files'=> 'sites/default/files',
+		'%files'=> 'sites/default/files',
 	),
+
+	'ssh-options' => "-p 37241",
 );

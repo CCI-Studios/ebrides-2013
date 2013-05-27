@@ -7,9 +7,9 @@ package = "Commerce (contrib)"
 dependencies[] = "commerce_paypal"
 dependencies[] = "rules"
 
-; Information added by drupal.org packaging script on 2013-01-23
+; Information added by drupal.org packaging script on 2013-02-13
 version = "7.x-1.x-dev"
 core = "7.x"
 project = "commerce_paypal_ipn_rules_integration"
-datestamp = "1358944858"
+datestamp = "1360716257"
 

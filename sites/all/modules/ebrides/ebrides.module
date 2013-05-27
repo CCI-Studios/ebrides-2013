@@ -1,0 +1,64 @@
+<?php
+
+function ebrides_form_alter(&$form, &$form_state, $form_id) {
+	if ($form_id == 'webform_client_form_19') {
+		$form['#attached']['js'][] = drupal_get_path('module', 'ebrides'). '/ebrides.js';
+	}
+}
+
+function ebrides_preprocess_webform_confirmation(&$vars) {
+	module_load_include('inc', 'webform', 'includes/webform.submissions');
+	$submission = webform_get_submission($vars['node']->nid, $vars['sid']);
+
+	dsm($vars);
+	dsm($submission);
+
+	$form = $vars['node']->webform;
+
+	$email = "ebrides@ymail.com";
+	$name = "eBrides Payment";
+	$field_count = 10;
+
+	$locations = array();
+	for($i = 1; $i < 10; $i++) {
+		$locations[] = _map_webform($form, $submission, 'location'. $i);
+	}
+
+	$locations = array_filter($locations, 'strlen');
+	$amount = 99 + max(0, (count($locations) - 1) *30);
+
+
+	$confirmation = check_markup($vars['node']->webform['confirmation'], $vars['node']->webform['confirmation_format'], '', TRUE);
+	$confirmation .= <<<html
+<form action="https://www.paypal.com/cgi-bin/webscr" method="get">
+    <input type="hidden" name="cmd" value="_xclick" />
+    <input type="hidden" name="business" value="$email" />
+    <input type="hidden" name="lc" value="CA" />
+    <input type="hidden" name="item_name" value="$name" />
+
+    <input type="hidden" name="amount" value="$amount" />
+    <input type="submit" value="Pay \$$amount using Paypal" />
+
+    <input type="hidden" name="currency_code" value="CAD" />
+    <input type="hidden" name="button_subtype" value="products" />
+    <input type="hidden" name="no_note" value="1" />
+    <input type="hidden" name="no_shipping" value="1" />
+</form>
+html;
+
+	// Strip out empty tags added by WYSIWYG editors if needed.
+	$vars['confirmation_message'] = strlen(trim(strip_tags($confirmation))) ? $confirmation : '';
+}
+
+function _map_webform($form, $submission, $field) {
+	$mapping = array();
+	$components = $form['components'];
+	$values = $submission->data;
+
+	foreach ($components as $i => $component) {
+		$key = $component['form_key'];
+		$mapping[$key] = $i;
+	}
+
+	return $values[$mapping[$field]]['value'][0];
+}
