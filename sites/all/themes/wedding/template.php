@@ -232,6 +232,10 @@ function STARTERKIT_preprocess_block(&$variables, $hook) {
 }*/
 
 function wedding_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'search_form') {
+    $form['basic']['keys']['#size'] = 30;
+  }
+
   if ($form_id == 'search_block_form') {
     $form['search_block_form']['#default_value'] = t('Search'); // Set a default value for the textfield
     $form['actions']['#attributes']['class'][] = 'element-invisible';
@@ -248,7 +252,7 @@ function wedding_form_views_exposed_form_alter(&$form, $form_state) {
     if($fid = $filter->options['expose']['identifier']){
       if (isset($form[$fid]['#options'])){
         asort($form[$fid]['#options']);
-      }  
+      }
     }
   }
 
@@ -256,7 +260,7 @@ function wedding_form_views_exposed_form_alter(&$form, $form_state) {
   $field_id = 'field_city';
 
   // Only alter forms with the necessary field
-  if (isset($form[$field_id .'_value'])) {   
+  if (isset($form[$field_id .'_value'])) {
     // Build a query to get grouped by values of the field
     $query = db_select('field_data_' . $field_id, 'fd');
     $query->addField('fd', $field_id . '_value', 'field');
@@ -271,7 +275,7 @@ function wedding_form_views_exposed_form_alter(&$form, $form_state) {
       drupal_set_message(t('SQL Query failed when rewriting field %field from TEXT field to SELECT field.', array('%field' => $field_id)), 'warning');
       return;
     }
-   
+
     // Start with a default so the filter is optional
     $options = array('' => t('- Any -'));
 
@@ -279,7 +283,7 @@ function wedding_form_views_exposed_form_alter(&$form, $form_state) {
     foreach($result as $row) {
       $options[$row->field] = $row->field;
     }
-   
+
     // Alter the field
     $form[$field_id .'_value']['#type'] = 'select';
     $form[$field_id .'_value']['#options'] = $options;
@@ -294,16 +298,16 @@ function wedding_textarea($variables) {
   $element['#attributes']['cols'] = $element['#cols'];
   $element['#attributes']['rows'] = $element['#rows'];
   _form_set_class($element, array('form-textarea'));
- 
+
   $wrapper_attributes = array(
     'class' => array('form-textarea-wrapper'),
   );
- 
+
   // Add resizable behavior.
   if (!empty($element['#resizable'])) {
     $wrapper_attributes['class'][] = 'resizable';
   }
- 
+
   $output = '<div' . drupal_attributes($wrapper_attributes) . '>';
   $output .= '<textarea' . drupal_attributes($element['#attributes']) . '>' . check_plain($element['#value']) . '</textarea>';
   $output .= '</div>';

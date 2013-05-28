@@ -7,29 +7,34 @@ function ebrides_form_alter(&$form, &$form_state, $form_id) {
 }
 
 function ebrides_preprocess_webform_confirmation(&$vars) {
-	module_load_include('inc', 'webform', 'includes/webform.submissions');
-	$submission = webform_get_submission($vars['node']->nid, $vars['sid']);
 
-	dsm($vars);
-	dsm($submission);
+	if ($vars['node']->nid == 19) {
+		module_load_include('inc', 'webform', 'includes/webform.submissions');
+		$submission = webform_get_submission($vars['node']->nid, $vars['sid']);
 
-	$form = $vars['node']->webform;
+		$form = $vars['node']->webform;
 
-	$email = "ebrides@ymail.com";
-	$name = "eBrides Payment";
-	$field_count = 10;
+		$email = "ebrides@ymail.com";
+		$name = "eBrides Payment";
+		$field_count = 10;
 
-	$locations = array();
-	for($i = 1; $i < 10; $i++) {
-		$locations[] = _map_webform($form, $submission, 'location'. $i);
-	}
+		$location_price = 60;
+		$category_price = 60;
+		$categories = _map_webform_field($form, $submission, 'categories');
 
-	$locations = array_filter($locations, 'strlen');
-	$amount = 99 + max(0, (count($locations) - 1) *30);
+		$locations = array();
+		for($i = 1; $i < 10; $i++) {
+			$locations[] = _map_webform($form, $submission, 'location'. $i);
+		}
+
+		$locations = array_filter($locations, 'strlen');
+		$amount = 99 +
+			max(0, (count($locations) - 1)*$location_price) +
+			max(0, (count($categories) - 1)*$category_price);
 
 
-	$confirmation = check_markup($vars['node']->webform['confirmation'], $vars['node']->webform['confirmation_format'], '', TRUE);
-	$confirmation .= <<<html
+		$confirmation = check_markup($vars['node']->webform['confirmation'], $vars['node']->webform['confirmation_format'], '', TRUE);
+		$confirmation .= <<<html
 <form action="https://www.paypal.com/cgi-bin/webscr" method="get">
     <input type="hidden" name="cmd" value="_xclick" />
     <input type="hidden" name="business" value="$email" />
@@ -46,11 +51,12 @@ function ebrides_preprocess_webform_confirmation(&$vars) {
 </form>
 html;
 
-	// Strip out empty tags added by WYSIWYG editors if needed.
-	$vars['confirmation_message'] = strlen(trim(strip_tags($confirmation))) ? $confirmation : '';
+		// Strip out empty tags added by WYSIWYG editors if needed.
+		$vars['confirmation_message'] = strlen(trim(strip_tags($confirmation))) ? $confirmation : '';
+	}
 }
 
-function _map_webform($form, $submission, $field) {
+function _map_webform_field($form, $submission, $field) {
 	$mapping = array();
 	$components = $form['components'];
 	$values = $submission->data;
@@ -60,5 +66,10 @@ function _map_webform($form, $submission, $field) {
 		$mapping[$key] = $i;
 	}
 
-	return $values[$mapping[$field]]['value'][0];
+	return $values[$mapping[$field]]['value'];
+}
+
+function _map_webform($form, $submission, $field) {
+	$field = _map_webform_field($form, $submission, $field);
+	return $field[0];
 }

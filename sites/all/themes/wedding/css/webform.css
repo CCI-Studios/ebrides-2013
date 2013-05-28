@@ -72,7 +72,7 @@ label[for=edit-submitted-question-type] {
 .webform-component-textfield label,
 .webform-component-email label {
   float: left;
-  width: 250px; 
+  width: 250px;
   display: block;
 }
 
@@ -100,3 +100,5 @@ label[for=edit-submitted-question-type] {
   width: 33.3333%;
   float: left;
 }
+
+.webform-confirmation + .links { display: none; }
