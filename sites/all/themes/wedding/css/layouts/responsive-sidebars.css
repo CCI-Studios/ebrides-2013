@@ -119,7 +119,7 @@
  */
 
 @media all and (max-width: 400px) {
-  
+
   #main {
     /* padding-top: 3em; Move all the children of #main down to make room. */
     position: relative;
@@ -182,7 +182,7 @@
   .webform-component-textfield label,
   .webform-component-email label {
     float: none;
-    width: 250px; 
+    width: 250px;
     display: block;
   }
 
@@ -193,10 +193,15 @@
 }
 
 @media all and (min-width: 480px) {
-  
+
   #main {
     /* padding-top: 3em; Move all the children of #main down to make room. */
     position: relative;
+  }
+
+  #block-block-1 {
+    background: #fff url('../../images/splash.jpg') no-repeat right center;
+    background-size: 45%; /* 265/960 = 27.6041667% */
   }
 
   #navigation {
@@ -213,7 +218,7 @@
 
 @media all and (min-width: 960px) {
   .region-highlighted,
-  .sidebar-second #content, 
+  .sidebar-second #content,
   .two-sidebars #content {
     width: 66.6666%;
     float: left;
@@ -239,15 +244,16 @@
   }
 
   #block-block-1 {
-    background-size: 41.40625%; /* 265/640 = 41.40625% */
+    background-size: 60.40625%; /* 265/640 = 41.40625% */
     padding-right: 41.40625%; /* 265/640 = 41.40625% */
+    height: 300px;
   }
 
   .views-field-field-ad {
     width: inherit;
     padding: 0;
   }
-  
+
   .front .views-field-field-image img {
     width: 25.9375%; /* 166/640 */
   }

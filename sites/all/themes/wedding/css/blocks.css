@@ -30,9 +30,8 @@ h2.block-title { /* Block title */
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-  height: 300px;
-  background: #fff url('../images/splash.jpg') no-repeat right bottom;
-  background-size: 27.6041667%; /* 265/960 = 27.6041667% */
+  /*height: 300px;*/
+  background: white;
   border: 1px solid #ccc;
   padding: 10px 27.6041667% 10px 10px;
   margin-bottom: 20px;
@@ -44,7 +43,7 @@ h2.block-title { /* Block title */
   overflow: auto;
 }
 
-#block-block-3, 
+#block-block-3,
 #block-block-4 {
   width: 10.2857143%; /* 36/350 */
  	margin-right: 10px;
