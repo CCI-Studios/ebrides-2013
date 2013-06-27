@@ -73,3 +73,42 @@ function _map_webform($form, $submission, $field) {
 	$field = _map_webform_field($form, $submission, $field);
 	return $field[0];
 }
+
+function ebrides_views_pre_render(&$view) {
+	if ($view->name == 'business_listings') {
+		$cid = isset($view->filter['field_category_tid'])? $view->filter['field_category_tid'] : false;
+		$category = false;
+		$rid = isset($view->filter['field_regions_tid'])? $view->filter['field_regions_tid'] : false;
+		$region = false;
+
+		if ($cid) {
+			$cid = count($cid->value)? $cid->value[0] : false;
+
+			if ($cid) {
+				$category = taxonomy_term_load($cid);
+
+				if ($category) {
+					$category = $category->name;
+				}
+			}
+		}
+		if ($rid) {
+			$rid = count($rid->value)? $rid->value[0] : false;
+
+			if ($rid) {
+				$region = taxonomy_term_load($rid);
+
+				if ($region) {
+					$region = $region->name;
+				}
+			}
+		}
+
+		$title = array($region, $category);
+		$title = implode(', ', array_filter($title, 'strlen'));
+		$title = array('Business Listings', $title);
+		$title = implode(' - ', array_filter($title, 'strlen'));
+
+		$view->build_info['title'] = $title;
+	}
+}
