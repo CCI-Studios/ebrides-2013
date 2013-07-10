@@ -199,11 +199,6 @@
     position: relative;
   }
 
-  #block-block-1 {
-    background: #fff url('../../images/splash.jpg') no-repeat right center;
-    background-size: 45%; /* 265/960 = 27.6041667% */
-  }
-
   #navigation {
     position: absolute;
     top: 0; /* Move the navbar up inside #main's padding. */
@@ -241,12 +236,6 @@
 
   #content {
     display: block;
-  }
-
-  #block-block-1 {
-    background-size: 60.40625%; /* 265/640 = 41.40625% */
-    padding-right: 41.40625%; /* 265/640 = 41.40625% */
-    height: 300px;
   }
 
   .views-field-field-ad {
