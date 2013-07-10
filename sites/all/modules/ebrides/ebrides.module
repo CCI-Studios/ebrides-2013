@@ -75,7 +75,7 @@ function _map_webform($form, $submission, $field) {
 }
 
 function ebrides_views_pre_render(&$view) {
-	if ($view->name == 'business_listings') {
+	if ($view->name == 'business_listings' && $view->current_display == 'page') {
 		$cid = isset($view->filter['field_category_tid'])? $view->filter['field_category_tid'] : false;
 		$category = false;
 		$rid = isset($view->filter['field_regions_tid'])? $view->filter['field_regions_tid'] : false;
