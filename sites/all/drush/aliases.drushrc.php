@@ -11,3 +11,13 @@ $aliases['dev'] = array(
 
 	'ssh-options' => "-p 37241",
 );
+
+$aliases['live'] = array(
+	'uri'=> 'ebrides.ca',
+	'root' => '/home/ebrides/public_html',
+	'remote-host'=> 'host.lambtonshield.com',
+	'remote-user'=> 'ebrides',
+	'path-aliases'=> array(
+		'%files'=> 'sites/default/files',
+	)
+);
