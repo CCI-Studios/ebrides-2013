@@ -22,6 +22,10 @@ a {
   color: #f477aa;
   text-decoration: none;  
 }
+a:hover
+{
+  text-decoration:underline;
+}
 
 .form-textarea-wrapper textarea {
   width: auto;  
