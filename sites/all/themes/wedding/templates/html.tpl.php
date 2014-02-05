@@ -87,6 +87,7 @@
   <meta http-equiv="cleartype" content="on">
 
   <?php print $styles; ?>
+  <link type="text/css" rel="stylesheet" href="/sites/all/themes/wedding/css/layouts/responsive-sidebars.css" />
   <?php print $scripts; ?>
   <?php if ($add_respond_js): ?>
     <!--[if lt IE 9]>
