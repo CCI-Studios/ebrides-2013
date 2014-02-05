@@ -32,6 +32,7 @@ function ebrides_preprocess_webform_confirmation(&$vars) {
 			max(0, (count($locations) - 1)*$location_price) +
 			max(0, (count($categories) - 1)*$category_price);
 
+		$tax = round($amount * 0.13, 2);
 
 		$confirmation = check_markup($vars['node']->webform['confirmation'], $vars['node']->webform['confirmation_format'], '', TRUE);
 		$confirmation .= <<<html
@@ -42,6 +43,7 @@ function ebrides_preprocess_webform_confirmation(&$vars) {
     <input type="hidden" name="item_name" value="$name" />
 
     <input type="hidden" name="amount" value="$amount" />
+    <input type="hidden" name="tax" value="$tax" />
     <input type="submit" value="Pay \$$amount using Paypal" />
 
     <input type="hidden" name="currency_code" value="CAD" />
